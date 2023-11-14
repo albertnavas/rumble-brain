@@ -28,9 +28,17 @@ With GitHub Pages, the client is deployed automatically when pushing to the `mai
 
 # Server Deployment
 
+## Install dependencies
+
+`npm i --production`
+
+## Setup the database
+
+`npm run setup:db`
+
 ## Start the server
 
-`pm2 start npm --name "gooquiz-server" -- start`
+`pm2 start npm --name "gooquiz-server" -- run start:server`
 
 ## Reload the server
 
