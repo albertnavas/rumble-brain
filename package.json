@@ -1,0 +1,29 @@
+{
+  "name": "gooquiz",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "npm run dev --workspace=server",
+    "test-end-to-end:server": "npm run test-end-to-end --workspace=server",
+    "dev:client": "npm run dev --workspace=client",
+    "build:client": "npm run build --workspace=client",
+    "test:end-to-end": "npx playwright test",
+    "test:end-to-end:ui": "npx playwright test --ui",
+    "test:end-to-end:codegen": "npx playwright codegen",
+    "setup:db": "npm run migrate:latest --workspace=server",
+    "lint": "npm run lint --workspace=server && npm run lint --workspace=client"
+  },
+  "author": "Albert Navas",
+  "license": "ISC",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@playwright/test": "^1.39.0",
+    "husky": "^8.0.0"
+  }
+}

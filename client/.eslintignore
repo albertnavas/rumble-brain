@@ -1,0 +1,9 @@
+/build
+/.svelte-kit
+/package
+
+node_modules
+package-lock.json
+
+.env
+.env.*
