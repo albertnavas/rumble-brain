@@ -37,15 +37,29 @@
               <td>{game.gameName}</td>
               <td>{game.gameCreatedAt}</td>
               <td>{game.gameStatus?.status || 'READY'}</td>
-              <th style="text-align: center;">
+              <th class="text-right">
                 {#if showDeleteButtonKey !== key}
+                  {#if game.gameQuestions && game.gameQuestions.length !== 0}
+                    {#if game.gameStatus?.status === 'GAME_RESULTS'}
+                      <a
+                        href="/juego/play?gameId={game.gameId}"
+                        class="btn btn-success btn-xs">Resultados</a
+                      >
+                    {:else if game.gameStatus?.status === 'GAME_QUESTION' || game.gameStatus?.status === 'GAME_QUESTION_RESULTS'}
+                      <a
+                        href="/juego/play?gameId={game.gameId}"
+                        class="btn btn-success btn-xs">Continuar</a
+                      >
+                    {:else}
+                      <a
+                        href="/juego/play?gameId={game.gameId}"
+                        class="btn btn-success btn-xs">Comenzar</a
+                      >
+                    {/if}
+                  {/if}
                   <a
                     href="/juego/editar?gameId={game.gameId}"
                     class="btn btn-info btn-xs">Editar</a
-                  >
-                  <a
-                    href="/juego/play?gameId={game.gameId}"
-                    class="btn btn-success btn-xs">Comenzar</a
                   >
                   <button
                     on:click={() => (showDeleteButtonKey = key)}

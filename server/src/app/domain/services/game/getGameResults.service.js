@@ -18,6 +18,7 @@ const calculateExponentialScore = (questionTime, answerTime) => {
 const getGameResultsService = async (db, { gameId }) => {
   const gameQuestionsString = await db.admin.getAdminGameQuestions({ gameId })
   const gameQuestions = gameQuestionsString ? JSON.parse(gameQuestionsString) : null
+
   if (!gameQuestions) return { players: [] }
 
   const gameAnswers = await db.admin.getAdminGameAnswers({ gameId })
@@ -40,7 +41,9 @@ const getGameResultsService = async (db, { gameId }) => {
         const answerTime = new Date(answer.gameAnswerCreatedAt)
 
         const score = calculateExponentialScore(questionTime, answerTime)
-        const answerScore = acc[answer.playerName] ? acc[answer.playerName] + score : score
+
+        const answerScore = acc[answer.playerName] ? acc[answer.playerName].score + score : score
+
         acc[answer.playerName] = {
           score: answerScore,
           correctAnswers: acc[answer.playerName] ? acc[answer.playerName].correctAnswers + 1 : 1,
@@ -50,6 +53,7 @@ const getGameResultsService = async (db, { gameId }) => {
         }
       }
     }
+
     return acc
   }, {})
 

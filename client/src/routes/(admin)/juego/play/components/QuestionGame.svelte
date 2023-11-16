@@ -7,7 +7,7 @@
 
   import { onDestroy } from 'svelte'
   import type { Game } from '../../../../../@types/game'
-  import type { Socket } from 'dgram'
+  import type { Socket } from 'socket.io-client'
 
   const colors = ['#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1']
 
@@ -51,7 +51,7 @@
 </script>
 
 <div class="mx-auto w-5/6 text-center">
-  <div class="mx-auto mt-2 w-[334px]" in:fly={{ x: '-100%', duration: 500 }}>
+  <div class="mx-auto mt-2 w-[303px]" in:fly={{ x: '-100%', duration: 500 }}>
     <div class="badge badge-outline mb-4 ml-2 mr-2">
       {$gameState?.currentQuestion?.question.question}
     </div>
@@ -59,7 +59,7 @@
       {#if $gameState?.currentQuestion?.question.answers}
         {#each $gameState.currentQuestion.question.answers as answer, answerKey}
           <button
-            class="answer-textarea h-40 w-40 cursor-default text-xl text-white placeholder-gray-200"
+            class="answer-textarea h-36 w-36 cursor-default text-xl text-white placeholder-gray-200"
             style="background: {colors[answerKey]}">{answer.answer}</button
           >
         {/each}

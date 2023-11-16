@@ -3,6 +3,7 @@ const getAdminGamesService = async (repository, { adminId }) => {
 
   const gamesParsed = games.map((game) => {
     game.gameStatus = game.gameStatus ? JSON.parse(game.gameStatus) : null
+    game.gameQuestions = game.gameQuestions ? JSON.parse(game.gameQuestions) : null
     return game
   })
 

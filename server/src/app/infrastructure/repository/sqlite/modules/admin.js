@@ -29,7 +29,7 @@ const getAdminGames =
   (db) =>
     ({ adminId }) =>
       db(GAMES_TABLE)
-        .select('id_games as gameId', 'game_name as gameName', 'game_created_at as gameCreatedAt', 'game_status as gameStatus')
+        .select('id_games as gameId', 'game_name as gameName', 'game_created_at as gameCreatedAt', 'game_questions as gameQuestions', 'game_status as gameStatus')
         .where({ admins_id: adminId })
 
 const getAdminGameAnswers =

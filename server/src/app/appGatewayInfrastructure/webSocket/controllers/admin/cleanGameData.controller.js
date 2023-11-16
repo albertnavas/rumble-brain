@@ -1,5 +1,4 @@
 const { cleanGameDataUseCase } = require('../../../../application/admin/cleanGameData.useCase')
-const { getAdminGameUseCase } = require('../../../../application/admin/getAdminGame.useCase')
 const { getGamePlayersConnectedUseCase } = require('../../../../application/player/getGamePlayersConnected.useCase')
 
 const schema = require('../../contracts/cleanGameDataController.contract')
@@ -16,22 +15,6 @@ const cleanGameDataController =
 
       const { adminId, gameId } = parseResponse.data
 
-      const responseGetAdminGame = await getAdminGameUseCase({ logger, repository }, { adminId, gameId, withCorrectAnswers: false })
-
-      if (!responseGetAdminGame.status) {
-        logger.error({ error: responseGetAdminGame.error }, 'ERROR WS - responseGetAdminGame')
-        return true
-      }
-
-      const { game } = responseGetAdminGame.data
-
-      if (game.gameStatus.status) {
-        logger.info(`✅ ADMIN - GAME STARTED NO CLEAN GAME ${gameId} ✅`)
-        return true
-      }
-
-      logger.info(`✅ ADMIN - CLEAN GAME ${gameId} ✅`)
-
       const sockets = io.of('/player').sockets
       const socketIdsConnected = Array.from(sockets).map(([socketId]) => socketId)
 
@@ -39,6 +22,7 @@ const cleanGameDataController =
         { logger, repository },
         {
           gameId,
+          adminId,
           socketIdsConnected,
         },
       )
@@ -46,7 +30,7 @@ const cleanGameDataController =
       const responseGetGamePlayersConnected = await getGamePlayersConnectedUseCase(
         { logger, repository },
         {
-          gameId: game.gameId,
+          gameId,
         },
       )
 

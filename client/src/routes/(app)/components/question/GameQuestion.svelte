@@ -57,11 +57,11 @@
       <span class="loading loading-ring loading-lg" />
     {:else}
       {secondsLeft}
-      <div class="mx-auto w-[334px]">
+      <div class="mx-auto w-[303px]">
         <div class="grid w-full grid-cols-2 gap-4 text-center">
           {#each $gamePlayerState.currentQuestion.question.answers as answer, answerKey}
             <button
-              class="answer-textarea h-40 w-40 resize-none text-center text-white placeholder-gray-200"
+              class="answer-textarea h-36 w-36 resize-none text-center text-white placeholder-gray-200"
               style="background: {colors[answerKey]}"
               on:click={() => {
                 if (

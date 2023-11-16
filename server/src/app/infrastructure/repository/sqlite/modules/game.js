@@ -22,6 +22,7 @@ const getGame =
       db(GAMES_TABLE)
         .select(
           'id_games as gameId',
+          'admins_id as adminId',
           'game_name as gameName',
           'game_questions as gameQuestions',
           'game_created_at as gameCreatedAt',

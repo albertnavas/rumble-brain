@@ -8,9 +8,15 @@
 
   import type { Socket } from 'socket.io-client'
   import type { Game } from '../../../../../@types/game'
+  import { goto } from '$app/navigation'
 
   export let socket: Socket
   export let game: Game
+
+  if (!game?.gameQuestions || game?.gameQuestions.length === 0) {
+    const editGameURL = `/juego/editar?gameId=${game?.gameId}`
+    goto(editGameURL)
+  }
 
   const startGame = (socket: Socket, game: Game) => () => {
     if (game === null || game.gameId === null) {
