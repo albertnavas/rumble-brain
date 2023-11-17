@@ -13,6 +13,7 @@
   import GamePlayerResults from './components/results/GamePlayerResults.svelte'
 
   import { joinGame } from '$lib/infrastructure/websockets/player/playerWSActions'
+  import type { AdminInfo } from '../../@types/global'
 
   const gameIdParam = $page.url.searchParams.get('gameId')
   let gameId = gameIdParam?.toUpperCase() || ''
@@ -20,6 +21,7 @@
   const playerConnectionDataString = localStorage.getItem(
     'playerConnectionData',
   )
+
   if (playerConnectionDataString) {
     const playerConnectionData = JSON.parse(playerConnectionDataString)
     if (playerConnectionData.gameId !== gameId) {
@@ -27,10 +29,12 @@
     }
     joinGame(playerConnectionData)
   }
+  export let data
+  const adminInfo: AdminInfo = data.adminInfo || null
 </script>
 
 {#if !$gamePlayerState}
-  <GameJoinNav />
+  <GameJoinNav {adminInfo} />
   <GameJoin {gameId} />
 {:else if $gamePlayerState.currentQuestion?.question}
   <GamePlayerNav />
