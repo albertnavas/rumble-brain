@@ -1,3 +1,10 @@
+Gooquiz is an open-source project imitating Kahoot
+
+# Technologies
+
+- Client in Svelte
+- Backend in Node.js with API and WebSockets
+
 # Initial Setup
 
 ## Install dependencies
