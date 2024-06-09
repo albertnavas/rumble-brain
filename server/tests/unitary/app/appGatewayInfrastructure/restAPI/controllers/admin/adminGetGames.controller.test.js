@@ -30,7 +30,7 @@ describe('adminGetGamesController', () => {
   }
 
   authRestAPIMiddleware.mockImplementationOnce(() => (req, _, next) => {
-    req.user = { adminId: 'admin123' }
+    req.user = { adminId: 1 }
     next()
   })
 
@@ -39,7 +39,7 @@ describe('adminGetGamesController', () => {
   it('should return an array of games if getAdminGamesUseCase returns a successful status', async () => {
     const games = [{ id: 'game1' }, { id: 'game2' }]
     mockRepository.admin.getAdminGames.mockResolvedValueOnce(games)
-    mockRepository.admin.getAdmin.mockResolvedValueOnce({ adminId: 'admin123' })
+    mockRepository.admin.getAdmin.mockResolvedValueOnce({ adminId: 1 })
 
     const response = await request(app).get('/games')
 
@@ -50,7 +50,7 @@ describe('adminGetGamesController', () => {
   it('should return 200 and [] games array if throws an error', async () => {
     const error = new Error('Something went wrong')
     mockRepository.admin.getAdminGames.mockRejectedValueOnce(error)
-    mockRepository.admin.getAdmin.mockResolvedValueOnce({ adminId: 'admin123' })
+    mockRepository.admin.getAdmin.mockResolvedValueOnce({ adminId: 1 })
 
     const response = await request(app).get('/games')
 
