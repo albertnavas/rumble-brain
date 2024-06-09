@@ -9,7 +9,7 @@
       google.accounts.id.revoke(
         userEmail,
         (done: { successful: boolean; error: string }) => {
-          //if (done.successful) localStorage.removeItem("userInfo")
+          if (done.successful) localStorage.removeItem('userInfo')
           localStorage.removeItem('userInfo')
         },
       )
