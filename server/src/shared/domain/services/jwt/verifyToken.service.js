@@ -21,9 +21,9 @@ const verifyTokenTestEndToEnd = (token) => {
 const verifyTokenService = async (token) => {
   if (process.env.END_TO_END) {
     return verifyTokenTestEndToEnd(token)
+  } else {
+    return verifyToken(token)
   }
-
-  return verifyToken(token)
 }
 
 module.exports = {

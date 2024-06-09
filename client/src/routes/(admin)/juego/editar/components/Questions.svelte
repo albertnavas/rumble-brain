@@ -68,7 +68,7 @@
       <div class="grid w-full grid-cols-2">
         <div class="">
           <p>Juego</p>
-          <p><strong>{game.gameId}</strong></p>
+          <p><strong>{game.gameName}</strong></p>
         </div>
         <div class="">
           <button

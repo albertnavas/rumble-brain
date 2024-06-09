@@ -7,7 +7,7 @@ const adminSignIn = async (token: string) => {
   const adminSignInRes = await fetchJson('/admin/signin', 'POST', { token })
 
   if (!adminSignInRes.status) {
-    throw error(500, 'Admin sign in failed')
+    error(500, 'Admin sign in failed');
   }
 
   return true
@@ -17,7 +17,7 @@ const createGame = async (gameName: string) => {
   const createGameRes = await fetchJson('/game/create', 'POST', { gameName })
 
   if (!createGameRes.gameId) {
-    throw error(500, 'Game creation failed')
+    error(500, 'Game creation failed');
   }
 
   return createGameRes.gameId

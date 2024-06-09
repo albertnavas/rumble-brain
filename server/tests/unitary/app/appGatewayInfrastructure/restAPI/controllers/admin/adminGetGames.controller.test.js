@@ -29,7 +29,7 @@ describe('adminGetGamesController', () => {
     },
   }
 
-  authRestAPIMiddleware.mockImplementationOnce(() => (req, res, next) => {
+  authRestAPIMiddleware.mockImplementationOnce(() => (req, _, next) => {
     req.user = { adminId: 'admin123' }
     next()
   })
