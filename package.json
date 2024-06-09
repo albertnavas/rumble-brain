@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky",
+    "prepare-husky": "husky",
     "dev:server": "npm run dev --workspace=server",
     "start:server": "npm run start --workspace=server",
     "test-end-to-end:server": "npm run test-end-to-end --workspace=server",
