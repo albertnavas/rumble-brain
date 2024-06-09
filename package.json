@@ -22,9 +22,9 @@
     "server"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^18.2.0",
-    "@commitlint/config-conventional": "^18.1.0",
-    "@playwright/test": "^1.39.0",
-    "husky": "^8.0.0"
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@playwright/test": "^1.44.1",
+    "husky": "^9.0.11"
   }
 }
