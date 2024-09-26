@@ -42,7 +42,7 @@
         >
       </label>
 
-      <button class="btn btn-ghost text-xl normal-case">gooQuiz</button>
+      <button class="btn btn-ghost text-xl normal-case">rumbleBrain</button>
 
       <ul
         class="menu dropdown-content rounded-box menu-sm bg-base-100 z-[1] mt-3 w-52 p-2 shadow"

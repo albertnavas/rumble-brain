@@ -1,4 +1,4 @@
-Gooquiz is an open-source project imitating Kahoot
+RumbleBrain is an open-source project imitating Kahoot
 
 # Technologies
 
@@ -45,8 +45,8 @@ With GitHub Pages, the client is deployed automatically when pushing to the `mai
 
 ## Start the server
 
-`pm2 start npm --name "gooquiz-server" -- run start:server`
+`pm2 start npm --name "rumblebrain-server" -- run start:server`
 
 ## Reload the server
 
-`npm i --production && pm2 reload gooquiz-server`
+`npm i --production && pm2 reload rumblebrain-server`

@@ -6,7 +6,7 @@
 
 <div class="navbar bg-base-100">
   <div class="navbar-start">
-    <button class="btn btn-ghost text-xl normal-case">gooQuiz</button>
+    <button class="btn btn-ghost text-xl normal-case">rumbleBrain</button>
   </div>
   <div class="navbar-end">
     {#if !adminInfo}
