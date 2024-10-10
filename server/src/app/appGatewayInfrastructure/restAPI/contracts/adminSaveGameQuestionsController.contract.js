@@ -8,6 +8,7 @@ module.exports = z.object({
       question: z.string(),
       answers: z.array(
         z.object({
+          answerId: z.string(),
           answer: z.string(),
           isCorrect: z.boolean(),
         }),
