@@ -64,9 +64,11 @@
 
 <style>
   #question-textarea[placeholder] {
-    line-height: 72px;
+    line-height: 30px;
+    align-content: center;
   }
   .answer-textarea[placeholder] {
-    line-height: 80px;
+    line-height: 20px;
+    align-content: center;
   }
 </style>
