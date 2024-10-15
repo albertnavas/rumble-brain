@@ -9,7 +9,7 @@
   import type { Game } from '../../../../../@types/game'
   import type { Socket } from 'socket.io-client'
 
-  const colors = ['#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1']
+  const colors = ['#f6c048', '#b18bec', '#48dbfb', '#1dd1a1']
 
   // Seconds left logic to extract
   let dateNow = Date.now()
@@ -51,15 +51,15 @@
 </script>
 
 <div class="mx-auto w-5/6 text-center">
-  <div class="mx-auto mt-2 w-[303px]" in:fly={{ x: '-100%', duration: 500 }}>
-    <div class="badge badge-outline mb-4 ml-2 mr-2">
+  <div class="mx-auto mt-2 w-[500px]" in:fly={{ x: '-100%', duration: 500 }}>
+    <div class="border border-gray-300 mb-4 p-2 text-xl">
       {$gameState?.currentQuestion?.question.question}
     </div>
     <div class="grid grid-cols-2 grid-rows-2 justify-center gap-4">
       {#if $gameState?.currentQuestion?.question.answers}
         {#each $gameState.currentQuestion.question.answers as answer, answerKey}
           <button
-            class="answer-textarea h-36 w-36 cursor-default text-xl text-white placeholder-gray-200"
+            class="answer-textarea min-h-36 cursor-default text-xl p-2 text-white placeholder-gray-200"
             style="background: {colors[answerKey]}">{answer.answer}</button
           >
         {/each}

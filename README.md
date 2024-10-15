@@ -7,6 +7,10 @@ RumbleBrain is an open-source project imitating Kahoot
 
 # Initial Setup
 
+## Environment variables
+
+Copy the `/server/.env.sample` file to `/server/.env` and fill in the values.
+
 ## Install dependencies
 
 `npm i`
