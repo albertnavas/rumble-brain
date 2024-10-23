@@ -57,10 +57,12 @@
                       >
                     {/if}
                   {/if}
-                  <a
-                    href="/juego/editar?gameId={game.gameId}"
-                    class="btn btn-info btn-xs">Editar</a
-                  >
+                  {#if game.gameStatus?.status !== 'GAME_RESULTS' && game.gameStatus?.status !== 'GAME_QUESTION' && game.gameStatus?.status !== 'GAME_QUESTION_RESULTS'}
+                    <a
+                      href="/juego/editar?gameId={game.gameId}"
+                      class="btn btn-info btn-xs">Editar</a
+                    >
+                  {/if}
                   <button
                     on:click={() => (showDeleteButtonKey = key)}
                     class="btn btn-error btn-xs">Eliminar</button
