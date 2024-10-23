@@ -5,11 +5,15 @@
   import Error from './components/Error.svelte'
   import Questions from './components/Questions.svelte'
 
-  export let data: Game
+  interface Props {
+    data: Game;
+  }
+
+  let { data }: Props = $props();
   const game = data
 
-  let gameQuestions: GameQuestion[] = []
-  let keyActualQuestionEdit: number = 0
+  let gameQuestions: GameQuestion[] = $state([])
+  let keyActualQuestionEdit: number = $state(0)
 
   if (game && game.gameQuestions !== null) {
     gameQuestions = game.gameQuestions
@@ -17,7 +21,7 @@
     gameQuestions = []
   }
 
-  let editSuccess: boolean = true
+  let editSuccess: boolean = $state(true)
 </script>
 
 <svelte:head>

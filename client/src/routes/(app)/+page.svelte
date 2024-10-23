@@ -29,7 +29,7 @@
     }
     joinGame(playerConnectionData)
   }
-  export let data
+  let { data } = $props();
   const adminInfo: AdminInfo = data.adminInfo || null
 </script>
 

@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="navbar-end">
-    <button on:click={signOut} class="btn btn-error btn-outline"
+    <button onclick={signOut} class="btn btn-error btn-outline"
       >Cerrar sessión</button
     >
   </div>
@@ -73,4 +73,4 @@
   data-context="signin"
   data-ux_mode="popup"
   data-auto_prompt="false"
-/>
+></div>

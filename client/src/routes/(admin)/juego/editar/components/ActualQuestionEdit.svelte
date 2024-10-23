@@ -2,8 +2,15 @@
   import type { GameQuestion } from '../../../../../@types/game'
   const colors = ['#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1']
 
-  export let keyActualQuestionEdit: number
-  export let gameQuestions: GameQuestion[]
+  interface Props {
+    keyActualQuestionEdit: number
+    gameQuestions: GameQuestion[]
+  }
+
+  let {
+    keyActualQuestionEdit = $bindable(),
+    gameQuestions = $bindable(),
+  }: Props = $props()
 </script>
 
 {#if gameQuestions[keyActualQuestionEdit]}
@@ -14,7 +21,7 @@
       placeholder="Pregunta"
       bind:value={gameQuestions[keyActualQuestionEdit].question}
       autocomplete="off"
-    />
+    ></textarea>
     <div class="grid w-full grid-cols-2 gap-4 text-center">
       {#each gameQuestions[keyActualQuestionEdit].answers as answer, answerKey}
         <div class="flex flex-col">
@@ -24,7 +31,7 @@
             placeholder="Respuesta {answerKey + 1}"
             bind:value={answer.answer}
             autocomplete="off"
-          />
+          ></textarea>
           <div class="form-control">
             <label class="label cursor-pointer">
               <span class="label-text">¿Respuesta correcta?</span>
@@ -40,7 +47,7 @@
         </div>
       {/each}
     </div>
-    <div class="divider" />
+    <div class="divider"></div>
 
     <div class="grid w-full grid-cols-1">
       <div class="form-control">

@@ -2,7 +2,7 @@
   import { deleteGame } from '$lib/infrastructure/http/admin/adminHTTP.js'
   import type { Game } from '../../../@types/game.js'
 
-  let showDeleteButtonKey: number | null = null
+  let showDeleteButtonKey: number | null = $state(null)
 
   const deleteGameUseCase = async (gameId: string) => {
     const response = await deleteGame(gameId)
@@ -11,8 +11,8 @@
       games = games.filter((game: Game) => game?.gameId !== gameId)
     }
   }
-  export let data
-  let { games } = data
+  let { data } = $props();
+  let { games } = $state(data)
 </script>
 
 <svelte:head>
@@ -64,12 +64,12 @@
                     >
                   {/if}
                   <button
-                    on:click={() => (showDeleteButtonKey = key)}
+                    onclick={() => (showDeleteButtonKey = key)}
                     class="btn btn-error btn-xs">Eliminar</button
                   >
                 {:else}
                   <button
-                    on:click={() => deleteGameUseCase(game.gameId)}
+                    onclick={() => deleteGameUseCase(game.gameId)}
                     class="btn btn-error btn-xs">Confirmar eliminar</button
                   >
                 {/if}

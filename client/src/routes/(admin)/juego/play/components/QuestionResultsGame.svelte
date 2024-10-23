@@ -16,13 +16,17 @@
     return manageGame(socket, game.gameId, 'GAME_QUESTION', null)
   }
 
-  export let socket: Socket
-  export let game: Game
+  interface Props {
+    socket: Socket;
+    game: Game;
+  }
+
+  let { socket, game }: Props = $props();
 </script>
 
 <div class="mx-auto text-center">
   <button
-    on:click={nextQuestionGame(socket, game)}
+    onclick={nextQuestionGame(socket, game)}
     class="btn btn-success mb-5 w-full max-w-xs">Siguiente pregunta 🚀</button
   >
   <ResultsGame />

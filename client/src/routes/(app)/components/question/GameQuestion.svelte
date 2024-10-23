@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { onDestroy } from 'svelte'
 
   import {
@@ -11,17 +13,17 @@
 
   const colors = ['#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1']
 
-  let dateNow = Date.now()
+  let dateNow = $state(Date.now())
   setInterval(() => {
     dateNow = Date.now()
   }, 1000)
 
-  $: questionSeconds = $gamePlayerState?.currentQuestion?.question.time
-  $: questionStart = new Date($gamePlayerState?.currentQuestion?.questionStart)
-  $: secondsLeft =
-    questionSeconds - Math.floor((dateNow - questionStart) / 1000)
+  let questionSeconds = $derived($gamePlayerState?.currentQuestion?.question.time)
+  let questionStart = $derived(new Date($gamePlayerState?.currentQuestion?.questionStart))
+  let secondsLeft =
+    $derived(questionSeconds - Math.floor((dateNow - questionStart) / 1000))
 
-  let timeout = false
+  let timeout = $state(false)
   let unsubscribe = gamePlayerState.subscribe((gamePlayerStateChange) => {
     if (
       questionStart !== gamePlayerStateChange?.currentQuestion?.questionStart
@@ -30,9 +32,11 @@
     }
   })
 
-  $: if (secondsLeft <= 0) {
-    timeout = true
-  }
+  run(() => {
+    if (secondsLeft <= 0) {
+      timeout = true
+    }
+  });
 
   onDestroy(() => {
     unsubscribe()
@@ -50,11 +54,11 @@
     {:else if $gamePlayerAnswersState[$gamePlayerState.currentQuestion.question.questionId]}
       <h1 class="mb-5">Respuesta enviada 🚀</h1>
       <p>Esperando a la siguiente pregunta ...</p>
-      <span class="loading loading-ring loading-lg" />
+      <span class="loading loading-ring loading-lg"></span>
     {:else if timeout}
       <h1 class="mb-5">Tiempo agotado 😔</h1>
       <p>Esperando a la siguiente pregunta ...</p>
-      <span class="loading loading-ring loading-lg" />
+      <span class="loading loading-ring loading-lg"></span>
     {:else}
       {secondsLeft}
       <div class="mx-auto w-[303px]">
@@ -63,7 +67,7 @@
             <button
               class="answer-textarea h-36 w-36 resize-none text-center text-white placeholder-gray-200"
               style="background: {colors[answerKey]}"
-              on:click={() => {
+              onclick={() => {
                 if (
                   $playerConnectionDataState?.playerConnectionToken &&
                   $gamePlayerState?.gameId &&
@@ -82,7 +86,7 @@
                   sendPlayerAnswer(playerAnswer)
                 }
               }}
-            />
+></button>
           {/each}
         </div>
       </div>

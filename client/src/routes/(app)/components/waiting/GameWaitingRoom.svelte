@@ -11,7 +11,7 @@
 	<div class="card-body items-center text-center">
 		<div in:fly={{ x: '-100%', duration: 500 }}>
 			<h1 class="mb-5">Esperando jugadores...</h1>
-			<span class="loading loading-ring loading-lg" />
+			<span class="loading loading-ring loading-lg"></span>
 			<div class="divider w-full">Jugadores</div>
 			<div class="mx-auto w-4/6">
 				{#if $playersState && $playersState.length > 0}

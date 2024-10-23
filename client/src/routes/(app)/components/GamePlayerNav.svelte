@@ -20,7 +20,7 @@
     <button class="btn btn-ghost mr-5 text-xl normal-case"
       >{$playerConnectionDataState?.playerName}</button
     >
-    <button on:click={disconnect} class="btn btn-error btn-outline"
+    <button onclick={disconnect} class="btn btn-error btn-outline"
       >Desconectar</button
     >
   </div>

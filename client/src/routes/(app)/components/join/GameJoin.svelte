@@ -4,9 +4,13 @@
 
   import Error from '../Error.svelte'
 
-  let playerName = ''
+  let playerName = $state('')
 
-  export let gameId: string
+  interface Props {
+    gameId: string;
+  }
+
+  let { gameId = $bindable() }: Props = $props();
 </script>
 
 <svelte:head>
@@ -22,7 +26,7 @@
         id="game-id"
         type="text"
         bind:value={gameId}
-        on:input={() => (gameId = gameId.toUpperCase())}
+        oninput={() => (gameId = gameId.toUpperCase())}
         placeholder="Introduce el ID del juego"
         class="input input-bordered input-accent w-full max-w-xs text-center outline-none focus:outline-none {$errorStore?.type ===
         'GAME_NOT_FOUND'
@@ -47,7 +51,7 @@
     </label>
 
     <button
-      on:click={() => playerJoinGame(gameId, playerName)}
+      onclick={() => playerJoinGame(gameId, playerName)}
       class="btn btn-outline btn-success mt-5 w-full max-w-xs"
       disabled={gameId.length > 0 && playerName.length > 0 ? false : true}
       >Unirse</button

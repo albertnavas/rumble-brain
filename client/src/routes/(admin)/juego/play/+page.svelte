@@ -10,14 +10,17 @@
   import type { Game, GamePlayers } from '../../../../@types/game'
 
   import { playGame } from '$lib/infrastructure/websockets/admin/adminWSActions'
-
   // import lonelinessSong from "$lib/assets/loneliness-8-bit.mp3";
 
-  export let data
+  interface Props {
+    data: any
+  }
+
+  let { data }: Props = $props()
   const game: Game = data.game
   const gamePlayers: GamePlayers = data.gamePlayers
 
-  let socket: Socket
+  let socket: Socket = $state()
 
   if (game) {
     gameState.set(game)

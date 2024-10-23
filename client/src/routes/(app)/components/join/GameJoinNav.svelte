@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { AdminInfo } from '../../../../@types/global'
 
-  export let adminInfo: AdminInfo
+  interface Props {
+    adminInfo: AdminInfo;
+  }
+
+  let { adminInfo }: Props = $props();
 </script>
 
 <div class="navbar bg-base-100">

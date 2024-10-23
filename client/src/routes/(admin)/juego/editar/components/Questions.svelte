@@ -56,10 +56,19 @@
     keyActualQuestionEdit = 0
   }
 
-  export let game: Game
-  export let keyActualQuestionEdit: number
-  export let gameQuestions: GameQuestion[]
-  export let editSuccess: boolean
+  interface Props {
+    game: Game;
+    keyActualQuestionEdit: number;
+    gameQuestions: GameQuestion[];
+    editSuccess: boolean;
+  }
+
+  let {
+    game,
+    keyActualQuestionEdit = $bindable(),
+    gameQuestions = $bindable(),
+    editSuccess = $bindable()
+  }: Props = $props();
 </script>
 
 {#if game}
@@ -72,7 +81,7 @@
         </div>
         <div class="">
           <button
-            on:click={() => saveGameQuestionsHandler()}
+            onclick={() => saveGameQuestionsHandler()}
             class="btn btn-outline btn-success w-full max-w-xs">Guardar</button
           >
         </div>
@@ -81,7 +90,7 @@
   </div>
 
   <button
-    on:click={() => addQuestion()}
+    onclick={() => addQuestion()}
     class="btn btn-sm btn-outline btn-info my-3 w-full">Añadir Pregunta</button
   >
 
@@ -97,7 +106,7 @@
               <td>Pregunta {key + 1}</td>
               <th class="text-right">
                 <button
-                  on:click={changeActualQuestionEdit}
+                  onclick={changeActualQuestionEdit}
                   data-pkey={key}
                   class="btn btn-info btn-xs"
                 >
@@ -105,7 +114,7 @@
                   Editar
                 </button>
                 <button
-                  on:click={removeQuestion}
+                  onclick={removeQuestion}
                   data-pkey={key}
                   class="btn btn-error btn-xs"
                 >

@@ -10,8 +10,12 @@
   import type { Game } from '../../../../../@types/game'
   import { goto } from '$app/navigation'
 
-  export let socket: Socket
-  export let game: Game
+  interface Props {
+    socket: Socket;
+    game: Game;
+  }
+
+  let { socket, game }: Props = $props();
 
   if (!game?.gameQuestions || game?.gameQuestions.length === 0) {
     const editGameURL = `/juego/editar?gameId=${game?.gameId}`
@@ -39,14 +43,14 @@
 <div class="mx-auto w-2/6 text-center">
   <div class="mb-4">
     <h1 class="text-2xl">Únete</h1>
-    <canvas id="canvas" class="m-auto" />
+    <canvas id="canvas" class="m-auto"></canvas>
     <p>{joinUrl}</p>
     <div class="badge badge-info badge-lg mt-4 p-5 text-2xl">
       {game?.gameId}
     </div>
   </div>
   <div class="mb-6">
-    <button on:click={startGame(socket, game)} class="btn btn-success w-full"
+    <button onclick={startGame(socket, game)} class="btn btn-success w-full"
       >Empezar 🚀</button
     >
   </div>
@@ -54,7 +58,7 @@
   {#if game}
     <div in:fly={{ x: '-100%', duration: 500 }}>
       <div class="divider w-full">Jugadores</div>
-      <span class="loading loading-ring loading-lg" />
+      <span class="loading loading-ring loading-lg"></span>
       <div class="mx-auto mt-2 w-4/6">
         {#if $playersState && $playersState.length > 0}
           {#each $playersState as player}

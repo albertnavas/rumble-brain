@@ -3,8 +3,8 @@
   import { createGame } from '$lib/infrastructure/http/admin/adminHTTP'
   import Error from '../components/Error.svelte'
 
-  let gameName: string = ''
-  let createError: boolean = false
+  let gameName: string = $state('')
+  let createError: boolean = $state(false)
 
   const createGameHandler = async () => {
     try {
@@ -39,7 +39,7 @@
       />
 
       <button
-        on:click={() => createGameHandler()}
+        onclick={() => createGameHandler()}
         class="btn btn-outline btn-success mt-5 w-full max-w-xs"
         disabled={gameName.length > 0 ? false : true}>Crear</button
       >

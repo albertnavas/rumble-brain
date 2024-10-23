@@ -46,7 +46,7 @@
       data-ux_mode="popup"
       data-callback="onSignIn"
       data-auto_prompt="false"
-    />
+></div>
 
     <div
       class="g_id_signin"
@@ -56,7 +56,7 @@
       data-text="signin_with"
       data-size="large"
       data-logo_alignment="left"
-    />
+></div>
   </div>
 </div>
 

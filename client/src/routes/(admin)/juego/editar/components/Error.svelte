@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let editSuccess: boolean
+	interface Props {
+		editSuccess: boolean;
+	}
+
+	let { editSuccess }: Props = $props();
 </script>
 
 <div class="mx-auto w-5/6">
