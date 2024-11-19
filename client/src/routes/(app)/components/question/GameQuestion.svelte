@@ -9,7 +9,7 @@
 
   import { sendPlayerAnswer } from '$lib/infrastructure/websockets/player/playerWSActions'
 
-  const colors = ['#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1']
+  const colors = ['#feca57', '#b18bec', '#48dbfb', '#1dd1a1']
 
   let dateNow = Date.now()
   setInterval(() => {
