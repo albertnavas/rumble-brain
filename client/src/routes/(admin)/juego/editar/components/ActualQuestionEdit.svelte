@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { GameQuestion } from '../../../../../@types/game'
-  const colors = ['#feca57', '#ff6b6b', '#48dbfb', '#1dd1a1']
+  const colors = ['#feca57', '#b18bec', '#48dbfb', '#1dd1a1']
 
   export let keyActualQuestionEdit: number
   export let gameQuestions: GameQuestion[]
