@@ -42,16 +42,17 @@ module.exports = { createRouter }
 const gameInsertController =
   ({ repository }) =>
     async (req, res) => {
-      await repository.admin.removeAdminGame({ adminId: 1, gameId: 'KIRA' })
-      const admin = await repository.admin.getAdmin({ adminSubId: '101863454080879012553' })
-      const gameQuestions =
-      '[{"questionId":"1w4g","question":"¿Cuantos años tengo?","answers":[{"answerId":"1w4g-1","answer":"33","isCorrect":true},{"answerId":"1w4g-2","answer":"12","isCorrect":false},{"answerId":"1w4g-3","answer":"54","isCorrect":false},{"answerId":"1w4g-4","answer":"45","isCorrect":false}],"time":"20"},{"questionId":"u2ej","question":"¿Nombre de mi perro?","answers":[{"answerId":"u2ej-1","answer":"Baxter","isCorrect":true},{"answerId":"u2ej-2","answer":"Tor","isCorrect":false},{"answerId":"u2ej-3","answer":"Kira","isCorrect":false},{"answerId":"u2ej-4","answer":"Cuca","isCorrect":false}],"time":"10"},{"questionId":"idea","question":"¿Pokemons?","answers":[{"answerId":"idea-1","answer":"Pikachu","isCorrect":true},{"answerId":"idea-2","answer":"Venom","isCorrect":false},{"answerId":"idea-3","answer":"Bulma","isCorrect":false},{"answerId":"idea-4","answer":"Ratata","isCorrect":true}],"time":"10"}]'
+      // await repository.admin.removeAdminGame({ adminId: 3, gameId })
+      const admin = await repository.admin.getAdmin({ adminSubId: '103093551473053600000' })
+      const rootGame = await repository.game.getGame({gameId:"G913D"})
+
+      const gameId = Math.random().toString(36).slice(2, 7).toUpperCase()
       const game = {
-        id_games: 'KIRA',
+        id_games: gameId,
         admins_id: admin.adminId,
-        game_name: 'Kira Game',
-        game_status: '{}',
-        game_questions: gameQuestions,
+        game_name: 'Testing Best Practices',
+        game_status: '{"status":"CREATED","currentQuestionNumber":null,"currentQuestion":null,"currentQuestionStart":null}',
+        game_questions: rootGame.gameQuestions,
       }
 
       await repository.game.gameInsert(game)
