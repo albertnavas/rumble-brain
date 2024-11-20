@@ -25,8 +25,8 @@ const playerAnswerController =
         },
       )
 
-      if (!responseCreatePlayerAnswer && !responseCreatePlayerAnswer.status) {
-        logger.error({ error: responseCreatePlayerAnswer.error }, 'ERROR WS - responseCreatePlayerAnswer')
+      if (!responseCreatePlayerAnswer?.status) {
+        logger.error({ error: responseCreatePlayerAnswer?.error }, 'ERROR WS - responseCreatePlayerAnswer')
         return true
       }
 
